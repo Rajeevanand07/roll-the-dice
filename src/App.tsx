@@ -13,6 +13,12 @@ import Dicethree from '../assets/three.png';
 import Dicefour from '../assets/four.png';
 import Dicefive from '../assets/five.png';
 import Dicesix from '../assets/six.png';
+import RNHapticFeedback from "react-native-haptic-feedback";
+
+RNHapticFeedback.trigger("notificationSuccess", {
+  enableVibrateFallback: true, // iOS: vibrate if Core Haptics unavailable
+  ignoreAndroidSystemSettings: false,
+});
 
 type DiceProps = PropsWithChildren<{
   imageUrl: ImageSourcePropType;
@@ -54,6 +60,7 @@ const App = (): JSX.Element => {
         setDiceImage(Diceone);
         break;
     }
+    RNHapticFeedback.trigger("impactMedium");
   };
   return (
     <View style={styles.container}>
